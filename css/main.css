@@ -32,3 +32,19 @@ nav {
 	display: block;
 	overflow-wrap: break-word;
 }
+
+.seagreen {
+  color: seagreen;
+}
+
+.greenyellow {
+  color: greenyellow;
+}
+
+.orangered {
+  color: orangered;
+}
+
+.red {
+  color: red;
+}

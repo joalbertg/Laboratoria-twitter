@@ -13,7 +13,7 @@ function begin() {
   function message(event) {
     event.preventDefault();
 
-    if(tweetArea.value) {
+    if (tweetArea.value) {
       var div = document.createElement('div');
       var tweet = document.createElement('span');
 
@@ -36,14 +36,42 @@ function begin() {
 
     // si no existe, se asigna MAX
     // si existe se habilita el boton y se resta el max con la longitud
-    if(event.target.value) {
-      tweetBtn.disabled = false;
+    if (event.target.value) {
+      var total = MAXCHARACTERS - event.target.value.length;
 
-      if (event.target.value.length > 0)
-        count.textContent = MAXCHARACTERS - event.target.value.length;
+      tweetBtnActive(true);
+
+      count.textContent = total;
+
+      changeColor(total);
     } else {
-      tweetBtn.disabled = true;
+      tweetBtnActive(false);
       count.textContent = MAXCHARACTERS;
     }
+  }
+
+  function changeColor(total) {
+    switch (true) {
+      case (total < 0):
+        tweetBtnActive(false);
+        count.classList.add('red');
+        count.classList.remove('orangered', 'greenyellow', 'seagreen');
+        break;
+      case (total <= 10):
+        count.classList.add('orangered');
+        count.classList.remove('red', 'greenyellow', 'seagreen');
+        break;
+      case (total <= 20):
+        count.classList.add('greenyellow');
+        count.classList.remove('red', 'orangered', 'seagreen');
+        break;
+      default:
+        count.classList.add('seagreen');
+        count.classList.remove('red', 'orangered', 'greenyellow');
+      }
+  }
+
+  function tweetBtnActive(centinel) {
+    tweetBtn.disabled = !centinel;
   }
 }

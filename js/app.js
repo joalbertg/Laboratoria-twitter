@@ -32,8 +32,6 @@ function begin() {
   }
 
   function changeText(event) {
-    console.log(event.target.value);
-
     // si no existe, se asigna MAX
     // si existe se habilita el boton y se resta el max con la longitud
     if (event.target.value) {
@@ -46,6 +44,7 @@ function begin() {
       changeColor(total);
 
       checkEnters(event);
+      checkLong(event);
       /* if (event.keyCode === 13)
         event.target.rows = event.target.rows + 1; */
     } else {
@@ -92,5 +91,12 @@ function begin() {
 
     if (count)
       event.target.rows = count + 2;
+  }
+
+  // agrega filas si el cociente entre los caracteres y las columnas del
+  // textarea, es menor a las filas del textarea actuales
+  function checkLong(event) {
+    if((event.target.value.length / event.target.cols) < event.target.rows)
+      event.target.rows = (event.target.value.length / event.target.cols) + 2;
   }
 }

@@ -17,7 +17,8 @@ function begin() {
       var div = document.createElement('div');
       var tweet = document.createElement('span');
 
-      tweet.textContent = tweetArea.value;
+      // agrega formato de hora
+      tweet.innerHTML = tweetArea.value + '<i> Publicado: ' + moment().format('hh:mm') + '</i>';
       tweet.classList.add('tweet');
 
       div.classList.add('nuevo-mensaje');

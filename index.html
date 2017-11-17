@@ -17,10 +17,11 @@
   <main class="container">
     <section>
       <form>
-        <textarea id="tweet-area" placeholder="¿Qué estás pasando?"></textarea>
+        <textarea id="tweet-area" placeholder="¿Qué estás pasando?" autofocus></textarea>
 
         <div class="footer-form">
-          <input id='tweet-btn' type="submit" value="tweet">
+          <input id='tweet-btn' type="submit" value="tweet" disabled>
+          <span id="count">140</span>          
         </div>
       </form>
     </section>

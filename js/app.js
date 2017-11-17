@@ -44,6 +44,10 @@ function begin() {
       count.textContent = total;
 
       changeColor(total);
+
+      checkEnters(event);
+      /* if (event.keyCode === 13)
+        event.target.rows = event.target.rows + 1; */
     } else {
       tweetBtnActive(false);
       count.textContent = MAXCHARACTERS;
@@ -68,10 +72,25 @@ function begin() {
       default:
         count.classList.add('seagreen');
         count.classList.remove('red', 'orangered', 'greenyellow');
-      }
+    }
   }
 
+  // habilita el boton de tweet
   function tweetBtnActive(centinel) {
     tweetBtn.disabled = !centinel;
+  }
+
+  // verifica las filas del textarea, si sobrepasa
+  // se agrega una fila más, sino se elimina
+  function checkEnters(event) {
+    var text = event.target.value.split('');
+    var count = 0;
+
+    for (var i = 0; i < text.length; i++)
+      if (text[i] === '\n')
+        count++;
+
+    if (count)
+      event.target.rows = count + 2;
   }
 }
